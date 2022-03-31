@@ -14,20 +14,20 @@ import config from './config.js';
 // Define the handlers
 const handlers = {};
 
-// Sample Handler
-handlers.sample = (data, cb) => {
-  // Callback a http status code and a payload object
-  cb(406, { name: 'sample handler' });
+// Ping Handler
+handlers.ping = (data, cb) => {
+  cb(200);
 };
 
 // Not found handler
 handlers.notFound = (data, cb) => {
+  // Callback a http status code and a payload object
   cb(404);
 };
 
 // Define a request router
 const router = {
-  sample: handlers.sample,
+  ping: handlers.ping,
 };
 
 // All the server logic for both the http and https server

@@ -1,5 +1,5 @@
 ### 404 Route
 get http://localhost:3000
 
-### Sample Route
-get http://localhost:3000/sample?foo=bar
+### Ping Route
+get http://localhost:3000/ping
