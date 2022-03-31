@@ -4,13 +4,34 @@
 
 // Dependencies
 import http from 'http';
+import https from 'https';
 import url from 'url';
 import { StringDecoder } from 'string_decoder';
+import fs from 'fs';
 
 import config from './config.js';
 
-// The server should respond to all requests with a string
-const server = http.createServer((req, res) => {
+// Define the handlers
+const handlers = {};
+
+// Sample Handler
+handlers.sample = (data, cb) => {
+  // Callback a http status code and a payload object
+  cb(406, { name: 'sample handler' });
+};
+
+// Not found handler
+handlers.notFound = (data, cb) => {
+  cb(404);
+};
+
+// Define a request router
+const router = {
+  sample: handlers.sample,
+};
+
+// All the server logic for both the http and https server
+const app = (req, res) => {
   // Get the URL and parse it
   const parsedUrl = url.parse(req.url, true);
 
@@ -68,30 +89,33 @@ const server = http.createServer((req, res) => {
       console.log('Returning this response: ', statusCode, payloadString);
     });
   });
+};
+
+// Instantiate the HTTP Server
+const httpServer = http.createServer((req, res) => {
+  app(req, res);
 });
 
-// Define the handlers
-const handlers = {};
-
-// Sample Handler
-handlers.sample = (data, cb) => {
-  // Callback a http status code and a payload object
-  cb(406, { name: 'sample handler' });
-};
-
-// Not found handler
-handlers.notFound = (data, cb) => {
-  cb(404);
-};
-
-// Define a request router
-const router = {
-  sample: handlers.sample,
-};
-
-// Start the server, and have it listen on port 3000
-server.listen(config.port, () => {
+// Start the HTTP Server
+httpServer.listen(config.httpPort, () => {
   console.log(
-    `The server is listening on port ${config.port} in ${config.envName} mode`,
+    `The server is listening on port ${config.httpPort} in ${config.envName} mode`,
+  );
+});
+
+// Instantiate the HTTPS Server
+const httpsServerOptions = {
+  key: fs.readFileSync('./https/key.pem'),
+  cert: fs.readFileSync('./https/cert.pem'),
+};
+
+const httpsServer = https.createServer(httpsServerOptions, (req, res) => {
+  app(req, res);
+});
+
+// Start the HTTPS Server
+httpsServer.listen(config.httpsPort, () => {
+  console.log(
+    `The server is listening on port ${config.httpsPort} in ${config.envName} mode`,
   );
 });
