@@ -1,14 +1,17 @@
+@baseUrl = http://localhost:3000
+
 ### 404 Route
-get http://localhost:3000
+get {{baseUrl}}
 
 ### Ping Route
-get http://localhost:3000/ping
+get {{baseUrl}}/ping
 
 ### Get User
-get http://localhost:3000/users?phone=8898452513
+get {{baseUrl}}/users?phone=8898452513
+token: uzaru88j5ujnjl3hhqd2
 
 ### Create User
-post http://localhost:3000/users
+post {{baseUrl}}/users
 Content-Type: application/json
 
 {
@@ -20,7 +23,7 @@ Content-Type: application/json
 }
 
 ### Update User
-put http://localhost:3000/users
+put {{baseUrl}}/users
 Content-Type: application/json
 
 {
@@ -30,4 +33,28 @@ Content-Type: application/json
 }
 
 ### Delete User
-delete http://localhost:3000/users?phone=8898452513
+delete {{baseUrl}}/users?phone=8898452513
+
+### Get Token
+get {{baseUrl}}/tokens?id=2g4obadif86xprkl38v5
+
+### Create Token
+post {{baseUrl}}/tokens
+Content-Type: application/json
+
+{
+  "phone": "8898452513",
+  "password": "teste123"
+}
+
+### Update Token
+put {{baseUrl}}/tokens
+Content-Type: application/json
+
+{
+  "id": "2g4obadif86xprkl38v5",
+  "extend": true
+}
+
+### Delete token
+delete {{baseUrl}}/tokens?id=2g4obadif86xprkl38v5

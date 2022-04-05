@@ -17,6 +17,7 @@ import helpers from './lib/helpers.js';
 const router = {
   ping: handlers.ping,
   users: handlers.users,
+  tokens: handlers.tokens,
 };
 
 // All the server logic for both the http and https server
@@ -75,7 +76,10 @@ const app = (req, res) => {
       res.writeHead(statusCode);
       res.end(payloadString);
       // Log the request path
-      console.log('Returning this response: ', statusCode, payloadString);
+      console.log({
+        statusCode,
+        payload: payloadString,
+      });
     });
   });
 };
