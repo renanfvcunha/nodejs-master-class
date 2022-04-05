@@ -3,3 +3,31 @@ get http://localhost:3000
 
 ### Ping Route
 get http://localhost:3000/ping
+
+### Get User
+get http://localhost:3000/users?phone=8898452513
+
+### Create User
+post http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "phone": "8898452513",
+  "password": "teste123",
+  "tosAgreement": true
+}
+
+### Update User
+put http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "lastName": "Smith",
+  "phone": "8898452513",
+  "password": "teste1234"
+}
+
+### Delete User
+delete http://localhost:3000/users?phone=8898452513

@@ -9,25 +9,14 @@ import url from 'url';
 import { StringDecoder } from 'string_decoder';
 import fs from 'fs';
 
-import config from './config.js';
-
-// Define the handlers
-const handlers = {};
-
-// Ping Handler
-handlers.ping = (data, cb) => {
-  cb(200);
-};
-
-// Not found handler
-handlers.notFound = (data, cb) => {
-  // Callback a http status code and a payload object
-  cb(404);
-};
+import config from './lib/config.js';
+import handlers from './lib/handlers.js';
+import helpers from './lib/helpers.js';
 
 // Define a request router
 const router = {
   ping: handlers.ping,
+  users: handlers.users,
 };
 
 // All the server logic for both the http and https server
@@ -67,7 +56,7 @@ const app = (req, res) => {
       queryStringObject,
       method,
       headers,
-      payload: buffer,
+      payload: helpers.parseJsonToObject(buffer),
     };
 
     // Route the request to the handler specified in the router
