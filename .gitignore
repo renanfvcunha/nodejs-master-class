@@ -1,3 +1,4 @@
 .vscode
 https/*
 .data/*
+node_modules
