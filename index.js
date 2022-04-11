@@ -13,6 +13,13 @@ import config from './lib/config.js';
 import handlers from './lib/handlers.js';
 import helpers from './lib/helpers.js';
 
+/**
+ * @TODO GET RID OF THIS
+ */
+helpers.sendTwilioSms('8681437460', 'Hello!', (err) => {
+  console.error(err);
+});
+
 // Define a request router
 const router = {
   ping: handlers.ping,
