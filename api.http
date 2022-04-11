@@ -34,6 +34,8 @@ Content-Type: application/json
 
 ### Delete User
 delete {{baseUrl}}/users?phone=8898452513
+Content-Type: application/json
+token: 91qhifltkp7dsip9esqi
 
 ### Get Token
 get {{baseUrl}}/tokens?id=2g4obadif86xprkl38v5
@@ -58,3 +60,40 @@ Content-Type: application/json
 
 ### Delete token
 delete {{baseUrl}}/tokens?id=2g4obadif86xprkl38v5
+
+### Get check
+get {{baseUrl}}/checks?id=ecmey2ry6dnkj8icizbi
+Content-Type: application/json
+token: 28wuchmya7e0v0ipez72
+
+### Create check
+post {{baseUrl}}/checks
+Content-Type: application/json
+token: c1qwm49gz8xvwdk9e1xx
+
+{
+  "protocol": "http",
+  "url": "google.com",
+  "method": "get",
+  "successCodes": [200, 201],
+  "timeoutSeconds": 3
+}
+
+### Update check
+put {{baseUrl}}/checks?id=ecmey2ry6dnkj8icizbi
+Content-Type: application/json
+token: 28wuchmya7e0v0ipez72
+
+{
+  "id": "ecmey2ry6dnkj8icizbi",
+  "protocol": "https",
+  "url": "yahoo.com",
+  "method": "put",
+  "successCodes": [200, 201, 403],
+  "timeoutSeconds": 2
+}
+
+### Delete check
+delete {{baseUrl}}/checks?id=ecmey2ry6dnkj8icizbi
+Content-Type: application/json
+token: 28wuchmya7e0v0ipez72
