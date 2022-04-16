@@ -45,7 +45,7 @@ post {{baseUrl}}/tokens
 Content-Type: application/json
 
 {
-  "phone": "8898452513",
+  "phone": "8681437460",
   "password": "teste123"
 }
 
@@ -69,11 +69,11 @@ token: 28wuchmya7e0v0ipez72
 ### Create check
 post {{baseUrl}}/checks
 Content-Type: application/json
-token: c1qwm49gz8xvwdk9e1xx
+token: 6ebo13i1vjjea7xw0w7y
 
 {
-  "protocol": "http",
-  "url": "google.com",
+  "protocol": "https",
+  "url": "yahoo.com",
   "method": "get",
   "successCodes": [200, 201],
   "timeoutSeconds": 3
