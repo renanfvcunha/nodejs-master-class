@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 
-### 404 Route
+### Index Route
 get {{baseUrl}}
 
 ### Ping Route
