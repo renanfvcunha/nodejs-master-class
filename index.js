@@ -5,6 +5,7 @@
 // Dependencies
 import server from './lib/server.js';
 import workers from './lib/workers.js';
+import cli from './lib/cli.js';
 
 // Declare the app
 const app = {};
@@ -16,6 +17,11 @@ app.init = function () {
 
   // Start the workers
   workers.init();
+
+  // Start the CLI, but make sure it starts last
+  setTimeout(function () {
+    cli.init();
+  }, 50);
 };
 
 // Execute
