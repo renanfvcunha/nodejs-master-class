@@ -2,45 +2,16 @@
  * Test runner
  */
 
-// Dependencies
-import assert from 'assert';
-
-import helpers from '../lib/helpers.js';
+import unit from './unit.js';
 
 // Application logic for the test runner
 const _app = {};
 
 // Container for the tests
-_app.tests = {
-  unit: {},
-};
+_app.tests = {};
 
-// Assert that the getANumber function is returning a number
-_app.tests.unit['helpers.getANumber should return a number'] = done => {
-  const val = helpers.getNumber();
-
-  assert.equal(typeof val, 'number');
-
-  done();
-};
-
-// Assert that the getANumber function is returning 1
-_app.tests.unit['helpers.getANumber should return 1'] = done => {
-  const val = helpers.getNumber();
-
-  assert.equal(val, 1);
-
-  done();
-};
-
-// Assert that the getANumber function is returning 2
-_app.tests.unit['helpers.getANumber should return 2'] = done => {
-  const val = helpers.getNumber();
-
-  assert.strictEqual(val, 2);
-
-  done();
-};
+// Unit tests
+_app.tests.unit = unit;
 
 // Count all the tests
 _app.countTests = function () {
