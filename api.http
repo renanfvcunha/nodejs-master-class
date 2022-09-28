@@ -6,6 +6,9 @@ get {{baseUrl}}
 ### Ping Route
 get {{baseUrl}}/ping
 
+### Get Error
+get {{baseUrl}}/examples/error
+
 ### Get User
 get {{baseUrl}}/users?phone=8898452513
 token: uzaru88j5ujnjl3hhqd2
