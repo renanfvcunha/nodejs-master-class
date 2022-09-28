@@ -2,7 +2,11 @@
  * Test runner
  */
 
+// Override the NODE_ENV variable
+process.env.NODE_ENV = 'testing';
+
 import unit from './unit.js';
+import e2e from './e2e.js';
 
 // Application logic for the test runner
 const _app = {};
@@ -12,6 +16,7 @@ _app.tests = {};
 
 // Unit tests
 _app.tests.unit = unit;
+_app.tests.e2e = e2e;
 
 // Count all the tests
 _app.countTests = function () {
@@ -59,6 +64,7 @@ _app.produceTestReport = function (limit, successes, errors) {
 
   console.log('');
   console.log('--------------------END TEST REPORT--------------------');
+  process.exit(0);
 };
 
 // Run all the tests, collecting the errors and successes
