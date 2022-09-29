@@ -44,7 +44,7 @@ token: 91qhifltkp7dsip9esqi
 get {{baseUrl}}/tokens?id=2g4obadif86xprkl38v5
 
 ### Create Token
-post {{baseUrl}}/tokens
+post {{baseUrl}}/api/tokens
 Content-Type: application/json
 
 {
